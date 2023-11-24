@@ -1,12 +1,15 @@
+import { NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
       const navBarOptions = <>
+            <NavLink to="/"><li><a>Home</a></li></NavLink>
             <li><a>Blog</a></li>
             <li><a>Donation Request</a></li>
             <li><a>Registration</a></li>
             <li><a>Dashboard</a></li>
             <li><a>Funding</a></li>
+            <NavLink to='/search'><li><a>Search</a></li></NavLink>
 
       </>;
       return (
@@ -19,9 +22,10 @@ const Navbar = () => {
                               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     {navBarOptions}
 
+
                               </ul>
                         </div>
-                        <a className="btn btn-ghost text-xl">daisyUI</a>
+                        <img className="w-24" src="https://i.ibb.co/B393KCc/Blood-Donation-Logo.png" alt="" />
                   </div>
                   <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1">
