@@ -6,14 +6,14 @@ const Navbar = () => {
             <NavLink to="/"><li><a>Home</a></li></NavLink>
             <li><a>Blog</a></li>
             <li><a>Donation Request</a></li>
-            <li><a>Registration</a></li>
+            <NavLink to="/registration"><li><a>Registration</a></li></NavLink>
             <li><a>Dashboard</a></li>
             <li><a>Funding</a></li>
             <NavLink to='/search'><li><a>Search</a></li></NavLink>
 
       </>;
       return (
-            <div className="navbar bg-base-100">
+            <div className="navbar h-20 fixed z-20 bg-base-100">
                   <div className="navbar-start">
                         <div className="dropdown">
                               <label tabIndex={0} className="btn btn-ghost lg:hidden">

@@ -2,7 +2,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 const ContactUs = () => {
       return (
-            <section className="" id="contact">
+            <section className="" >
                   <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
                         <div className="mb-4">
                               <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
@@ -50,7 +50,7 @@ const ContactUs = () => {
                                                 {/* ... */}
                                           </ul>
                                     </div>
-                                    <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
+                                    <div className="card h-fit max-w-6xl p-5 md:p-12" >
                                           <h2 className="mb-4 text-2xl font-bold">Ready to Get Started?</h2>
                                           <form id="contactForm">
                                                 <div className="mb-6">
