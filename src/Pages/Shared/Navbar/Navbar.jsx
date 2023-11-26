@@ -7,7 +7,7 @@ const Navbar = () => {
             <li><a>Blog</a></li>
             <li><a>Donation Request</a></li>
             <NavLink to="/registration"><li><a>Registration</a></li></NavLink>
-            <li><a>Dashboard</a></li>
+            <NavLink to="/dashboard"><li><a>Dashboard</a></li></NavLink>
             <li><a>Funding</a></li>
             <NavLink to='/search'><li><a>Search</a></li></NavLink>
 
@@ -33,7 +33,7 @@ const Navbar = () => {
                         </ul>
                   </div>
                   <div className="navbar-end">
-                        <ul> <li> <a className="btn">Log in</a></li></ul>
+                        <NavLink to="/login"><ul> <li> <a className="btn">Log in</a></li></ul></NavLink>
                   </div>
             </div>
       );

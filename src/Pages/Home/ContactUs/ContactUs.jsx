@@ -70,7 +70,7 @@ const ContactUs = () => {
                                                       </div>
                                                 </div>
                                                 <div className="text-center">
-                                                      <button type="submit" className="w-full bg-[#ea062b] text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send Message</button>
+                                                      <button type="" className="w-full bg-[#ea062b] text-white px-6 py-3 font-xl rounded-md sm:mb-0">Send Message</button>
                                                 </div>
                                           </form>
                                     </div>
