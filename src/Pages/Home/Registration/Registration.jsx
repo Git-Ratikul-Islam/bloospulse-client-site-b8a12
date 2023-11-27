@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Registration = () => {
+      const { createUser } = useContext(AuthContext);
       const handleSubmitForm = e => {
             e.preventDefault();
             const form = e.target;
@@ -16,6 +20,19 @@ const Registration = () => {
                   name, email, district, upazila, password, file, confirmPassword, group
             };
             console.log(userData);
+            createUser(email, password)
+                  .then(result => {
+                        const loggedUser = result.user;
+                        console.log(loggedUser);
+                        Swal.fire({
+                              position: "top-center",
+                              icon: "success",
+                              title: "Registered Successfully",
+                              showConfirmButton: false,
+                              timer: 1500
+                        });
+                        form.reset();
+                  });
       };
 
 

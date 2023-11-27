@@ -7,6 +7,7 @@ import SearchForm from "../Pages/Home/SearchForm/SearchForm";
 import Registration from "../Pages/Home/Registration/Registration";
 import Dashboard from "../Pages/Home/Dashboard/Dashboard";
 import Login from "../Pages/Login/Login";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
                   },
                   {
                         path: '/search',
-                        element: <SearchForm></SearchForm>
+                        element: <PrivateRoute><SearchForm></SearchForm></PrivateRoute>
                   },
                   {
                         path: '/blog',
@@ -43,6 +44,6 @@ export const router = createBrowserRouter([
       },
       {
             path: '/dashboard',
-            element: <Dashboard></Dashboard>
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
       }
 ]);

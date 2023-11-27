@@ -1,12 +1,49 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+      const navigate = useNavigate();
+      const location = useLocation();
+      const { signIn } = useContext(AuthContext);
+
+      const from = location.state?.from?.pathname || "/";
+
+
       const handleLogin = e => {
             e.preventDefault();
             const form = e.target;
             const email = form.email.value;
             const password = form.password.value;
             console.log(email, password);
+            if (password.length < 6) {
+                  Swal.fire({
+                        icon: "error",
+                        title: "Password Error",
+                        text: "Password must be at least 6 characters long.",
+                        showConfirmButton: true
+                  });
+                  return;
+            }
+            signIn(email, password)
+                  .then(result => {
+                        const user = result.user;
+                        console.log(user);
+
+                        Swal.fire({
+                              position: "top-center",
+                              icon: "success",
+                              title: "Your work has been saved",
+                              showConfirmButton: false,
+                              timer: 1500
+                        });
+                        navigate(from, { replace: true });
+                        form.reset();
+
+
+                  });
+
       };
 
       return (
