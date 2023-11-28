@@ -33,7 +33,7 @@ export const router = createBrowserRouter([
                   {
                         path: '/registration',
                         element: <Registration></Registration>,
-                        loader: () => fetch("http://localhost:5000/donors")
+                        loader: () => fetch("http://localhost:5001/donors")
 
                   },
                   {
@@ -53,11 +53,13 @@ export const router = createBrowserRouter([
             children: [
                   {
                         path: 'profile',
-                        element: <Profile></Profile>
+                        element: <Profile></Profile>,
+
                   },
                   {
                         path: 'allUsers',
-                        element: <AllUsers></AllUsers>
+                        element: <AllUsers></AllUsers>,
+                        loader: () => fetch('http://localhost:5001/donors')
                   },
                   {
                         path: 'allBloodDonationReq',

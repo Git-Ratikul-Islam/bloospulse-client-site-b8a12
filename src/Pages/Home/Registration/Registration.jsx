@@ -47,10 +47,10 @@ const Registration = () => {
                               imageUrl: imageData.data.url,
                         };
 
-                        console.log(userData);
+                        // console.log(userData);
 
                         // Send user data to your server
-                        const serverResponse = await fetch("http://localhost:5000/donors", {
+                        const serverResponse = await fetch("http://localhost:5001/donors", {
                               method: "POST",
                               headers: {
                                     "Content-Type": "application/json",
