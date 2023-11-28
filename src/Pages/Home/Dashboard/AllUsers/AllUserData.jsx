@@ -38,7 +38,7 @@ const AllUserData = ({ data }) => {
       };
 
       return (
-            <tbody>
+            <tbody className="">
                   {/* row 1 */}
                   <tr>
                         <td>

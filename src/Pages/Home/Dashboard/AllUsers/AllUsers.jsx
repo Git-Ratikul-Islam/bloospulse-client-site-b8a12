@@ -13,7 +13,7 @@ const AllUsers = () => {
       // console.log(userData);
       return (
 
-            <div>
+            <div className="">
                   <div className="h-20  border-b-2 w-full border-b-gray-700">
 
 
@@ -31,7 +31,7 @@ const AllUsers = () => {
                         </div>
 
                   </div>
-                  <div className="overflow-x-auto">
+                  <div className="">
                         <table className="table">
                               {/* head */}
                               <thead>

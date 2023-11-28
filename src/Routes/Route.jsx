@@ -50,10 +50,13 @@ export const router = createBrowserRouter([
       {
             path: '/dashboard',
             element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+            loader: () => fetch('http://localhost:5001/donors'),
+
             children: [
                   {
                         path: 'profile',
                         element: <Profile></Profile>,
+
 
                   },
                   {
