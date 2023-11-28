@@ -8,6 +8,9 @@ import Registration from "../Pages/Home/Registration/Registration";
 import Dashboard from "../Pages/Home/Dashboard/Dashboard";
 import Login from "../Pages/Login/Login";
 import PrivateRoute from "./PrivateRoute";
+import Profile from "../Pages/Home/Dashboard/Profile/Profile";
+import AllUsers from "../Pages/Home/Dashboard/AllUsers/AllUsers";
+import AllBloodDonationReq from "../Pages/Home/Dashboard/AllBloodDonationReq/AllBloodDonationReq";
 
 
 export const router = createBrowserRouter([
@@ -44,6 +47,20 @@ export const router = createBrowserRouter([
       },
       {
             path: '/dashboard',
-            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+            element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+            children: [
+                  {
+                        path: 'profile',
+                        element: <Profile></Profile>
+                  },
+                  {
+                        path: 'allUsers',
+                        element: <AllUsers></AllUsers>
+                  },
+                  {
+                        path: 'allBloodDonationReq',
+                        element: <AllBloodDonationReq></AllBloodDonationReq>
+                  }
+            ]
       }
 ]);
