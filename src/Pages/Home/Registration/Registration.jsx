@@ -7,35 +7,85 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const Registration = () => {
       const { createUser } = useContext(AuthContext);
-      const handleSubmitForm = e => {
+
+      const handleSubmitForm = async (e) => {
             e.preventDefault();
             const form = e.target;
+
             const name = form.name.value;
             const group = form.group.value;
             const email = form.email.value;
-            const file = form.file.value;
+            const fileInput = form.file;
             const district = form.district.value;
             const upazila = form.upazila.value;
             const password = form.password.value;
             const confirmPassword = form.confirmPassword.value;
-            const userData = {
-                  name, email, district, upazila, password, file, confirmPassword, group
-            };
-            console.log(userData);
-            createUser(email, password)
-                  .then(result => {
-                        const loggedUser = result.user;
+
+            // Create a FormData object to handle file upload
+            const formData = new FormData();
+            formData.append("image", fileInput.files[0]);
+
+            try {
+                  // Uploading image to imgBB
+                  const response = await fetch(image_hosting_api, {
+                        method: "POST",
+                        body: formData,
+                  });
+
+                  const imageData = await response.json();
+
+                  // Checking if the image upload was successful
+                  if (imageData.success) {
+                        const userData = {
+                              name,
+                              email,
+                              district,
+                              upazila,
+                              password,
+                              confirmPassword,
+                              group,
+                              imageUrl: imageData.data.url,
+                        };
+
+                        console.log(userData);
+
+                        // Send user data to your server
+                        const serverResponse = await fetch("http://localhost:5000/donors", {
+                              method: "POST",
+                              headers: {
+                                    "Content-Type": "application/json",
+                              },
+                              body: JSON.stringify(userData),
+                        });
+
+                        const serverData = await serverResponse.json();
+                        console.log(serverData);
+
+                        // Create user in authentication system
+                        const authResult = await createUser(email, password);
+                        const loggedUser = authResult.user;
                         console.log(loggedUser);
+
+                        // Display success message
                         Swal.fire({
                               position: "top-center",
                               icon: "success",
                               title: "Registered Successfully",
                               showConfirmButton: false,
-                              timer: 1500
+                              timer: 1500,
                         });
+
+                        // Reset the form
                         form.reset();
-                  });
+                  } else {
+                        // Handle error in image upload
+                        console.error("Image upload failed");
+                  }
+            } catch (error) {
+                  console.error("Error:", error);
+            }
       };
+
 
 
 

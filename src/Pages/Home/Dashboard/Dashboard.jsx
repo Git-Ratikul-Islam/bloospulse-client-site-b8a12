@@ -23,7 +23,11 @@ const Dashboard = () => {
 
                               </li>
                               <li>
-                                    <NavLink className="bg-white" to="/dashboard/allBloodDonationReq">All blood donation request</NavLink>
+                                    <NavLink className="bg-white mb-1" to="/dashboard/allBloodDonationReq">All blood donation request</NavLink>
+
+                              </li>
+                              <li>
+                                    <NavLink className="bg-white" to="/">Go home</NavLink>
 
                               </li>
 

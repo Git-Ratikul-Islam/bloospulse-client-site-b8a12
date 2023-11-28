@@ -32,7 +32,9 @@ export const router = createBrowserRouter([
                   },
                   {
                         path: '/registration',
-                        element: <Registration></Registration>
+                        element: <Registration></Registration>,
+                        loader: () => fetch("http://localhost:5000/donors")
+
                   },
                   {
                         path: '/funding'
