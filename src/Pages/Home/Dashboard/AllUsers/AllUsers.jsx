@@ -2,14 +2,30 @@ import { useLoaderData } from "react-router-dom";
 import AllUserData from "./AllUserData";
 import { useContext } from "react";
 import { AuthContext } from "../../../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AllUsers = () => {
       const userData = useLoaderData();
+
       // eslint-disable-next-line no-unused-vars
       const { name, email } = userData;
 
-      const { user } = useContext(AuthContext);
+      const { user, logOut } = useContext(AuthContext);
+      const handleLogOut = () => {
+            logOut()
+                  .then(() => {
+                        Swal.fire({
+                              position: "top-center",
+                              icon: "success",
+                              title: "Log out successfully!",
+                              showConfirmButton: false,
+                              timer: 1500
+                        });
+
+                  })
+                  .catch(error => console.log(error));
+      };
       // console.log(userData);
       return (
 
@@ -26,13 +42,13 @@ const AllUsers = () => {
                               </div>
                               <ul className="menu menu-sm dropdown-content mt-10 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                     <li><a>{user.email}</a></li>
-                                    <li><a>Logout</a></li>
+                                    <li><a onClick={handleLogOut}>Log out</a></li>
                               </ul>
                         </div>
 
                   </div>
                   <div className="">
-                        <table className="table">
+                        <table className="table table-zebra w-full">
                               {/* head */}
                               <thead>
                                     <tr>

@@ -24,7 +24,7 @@ const Dashboard = () => {
                         <ul className="menu">
 
                               <li>
-                                    <NavLink className="bg-white mb-1" to="/dashboard">Dashboard</NavLink>
+                                    <NavLink className="bg-white mb-1" to="/dashboard/home">Dashboard</NavLink>
 
                               </li>
                               <li>
@@ -48,8 +48,10 @@ const Dashboard = () => {
                   </div>
                   {/* dashboard content */}
 
-                  <div className="flex-1">
+                  <div className="flex-1 overflow-x-auto">
                         <Outlet></Outlet>
+
+
 
                   </div>
 

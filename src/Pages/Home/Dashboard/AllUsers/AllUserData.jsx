@@ -9,6 +9,20 @@ const AllUserData = ({ data }) => {
       const { user } = useContext(AuthContext);
       const [userStatus, setUserStatus] = useState("active");
 
+      const handleMakeAdmin = user => {
+            fetch(`http://localhost:5001/donors/admin/${user._id}`, {
+                  method: "PATCH",
+                  headers: {
+                        "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({ user }),
+            })
+                  .then((res) => res.json())
+                  .then((data) => {
+                        console.log(data);
+                  });
+      };
+
       const openModal = () => {
             Swal.fire({
                   title: "Select User Status",
@@ -76,12 +90,12 @@ const AllUserData = ({ data }) => {
                                                 Block
                                           </a>
                                     </li>
-                                    <li>
-                                          <a>
-                                                Make Volunteer
-                                          </a>
-                                    </li>
+
                               </ul>
+                              <button className="btn btn-primary">Make Volunteer</button>
+                              {
+                                    user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="btn btn-secondary">Make Admin</button>
+                              }
                         </th>
                   </tr>
             </tbody>

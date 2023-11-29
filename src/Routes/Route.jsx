@@ -11,6 +11,9 @@ import PrivateRoute from "./PrivateRoute";
 import Profile from "../Pages/Home/Dashboard/Profile/Profile";
 import AllUsers from "../Pages/Home/Dashboard/AllUsers/AllUsers";
 import AllBloodDonationReq from "../Pages/Home/Dashboard/AllBloodDonationReq/AllBloodDonationReq";
+import DashboardHome from "../Pages/Home/Registration/DashboardHome";
+import Blog from "../Pages/Home/BLog/Blog";
+import Error404 from "../Pages/Home/Eror404/Error404";
 
 
 export const router = createBrowserRouter([
@@ -28,6 +31,7 @@ export const router = createBrowserRouter([
                   },
                   {
                         path: '/blog',
+                        element: <Blog></Blog>
 
                   },
                   {
@@ -60,6 +64,10 @@ export const router = createBrowserRouter([
 
                   },
                   {
+                        path: '/dashboard/home',
+                        element: <DashboardHome></DashboardHome>
+                  },
+                  {
                         path: 'allUsers',
                         element: <AllUsers></AllUsers>,
                         loader: () => fetch('http://localhost:5001/donors')
@@ -69,5 +77,9 @@ export const router = createBrowserRouter([
                         element: <AllBloodDonationReq></AllBloodDonationReq>
                   }
             ]
+      },
+      {
+            path: '*',
+            element: <Error404></Error404>
       }
 ]);

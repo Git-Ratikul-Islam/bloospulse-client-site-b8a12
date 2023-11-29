@@ -5,21 +5,10 @@ const Profile = () => {
       return (
 
             <div>
-                  <div className="h-20  border-b-2 w-full border-b-gray-700">
 
-                        <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                              <li>
-                                    <a className="justify-between">
-                                          Profile
-                                          <span className="badge">New</span>
-                                    </a>
-                              </li>
-                              <li><a>Settings</a></li>
-                              <li><a>Logout</a></li>
-                        </ul>
-                  </div>
+
                   <div className="overflow-x-auto">
-                        <table className="table">
+                        <table className="table ">
                               {/* head */}
                               <thead>
                                     <tr>

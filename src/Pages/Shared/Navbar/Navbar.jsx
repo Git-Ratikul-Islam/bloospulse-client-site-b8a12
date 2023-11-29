@@ -23,10 +23,10 @@ const Navbar = () => {
 
       const navBarOptions = <>
             <li><NavLink to="/"><a>Home</a></NavLink></li>
-            <li><a>Blog</a></li>
+            <li><NavLink to="/blog"><a>Blog</a></NavLink></li>
             <li><a>Donation Request</a></li>
             <li><NavLink to="/registration"><a>Registration</a></NavLink></li>
-            <li><NavLink to="/dashboard"><a>Dashboard</a></NavLink></li>
+            <li><NavLink to="/dashboard/home"><a>Dashboard</a></NavLink></li>
             <li><a>Funding</a></li>
             <li><NavLink to='/search'><a>Search</a></NavLink></li>
 
