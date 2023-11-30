@@ -3,6 +3,8 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import UseAxiosSecure from "../../Hook/UseAxiosSecure";
+import axiosSecure from "../../Hook/UseAxiosSecure";
 
 const AllUserData = ({ data }) => {
       const { name, email, district, upazila, imageUrl } = data;
@@ -10,19 +12,22 @@ const AllUserData = ({ data }) => {
       const [userStatus, setUserStatus] = useState("active");
 
       const handleMakeAdmin = user => {
-            fetch(`http://localhost:5001/donors/admin/${user._id}`, {
-                  method: "PATCH",
-                  headers: {
-                        "Content-Type": "application/json",
-                  },
-                  body: JSON.stringify({ user }),
-            })
-                  .then((res) => res.json())
-                  .then((data) => {
-                        console.log(data);
+            axiosSecure.patch(`/donors/admin/${user._id}`)
+                  .then(res => {
+                        console.log(res.data);
+                        if (res.data.modifiedCount > 0) {
+                              Swal.fire({
+                                    position: "top-center",
+                                    icon: "success",
+                                    title: `${user.name} is an admin`,
+                                    timer: 1500
+                              });
+                        }
+                  })
+                  .catch(error => {
+                        console.error("Error making admin:", error);
                   });
       };
-
       const openModal = () => {
             Swal.fire({
                   title: "Select User Status",
@@ -94,7 +99,7 @@ const AllUserData = ({ data }) => {
                               </ul>
                               <button className="btn btn-primary">Make Volunteer</button>
                               {
-                                    user.role === 'admin' ? 'Admin' : <button onClick={() => handleMakeAdmin(user)} className="btn btn-secondary">Make Admin</button>
+                                    user.role === 'admin' ? 'Admin' : <button className="btn btn-secondary">Make Admin</button>
                               }
                         </th>
                   </tr>

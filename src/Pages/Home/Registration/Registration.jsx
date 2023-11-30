@@ -50,7 +50,7 @@ const Registration = () => {
                         // console.log(userData);
 
                         // Send user data to your server
-                        const serverResponse = await fetch("http://localhost:5001/donors", {
+                        const serverResponse = await fetch("https://blood-donation-server-ten.vercel.app/donors", {
                               method: "POST",
                               headers: {
                                     "Content-Type": "application/json",

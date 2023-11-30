@@ -20,6 +20,7 @@ export const router = createBrowserRouter([
       {
             path: "/",
             element: <Main></Main>,
+            errorElement: <p>Oppps something went wrong</p>,
             children: [
                   {
                         path: '/',
@@ -37,7 +38,7 @@ export const router = createBrowserRouter([
                   {
                         path: '/registration',
                         element: <Registration></Registration>,
-                        loader: () => fetch("http://localhost:5001/donors")
+                        loader: () => fetch("https://blood-donation-server-ten.vercel.app/donors")
 
                   },
                   {
@@ -54,7 +55,7 @@ export const router = createBrowserRouter([
       {
             path: '/dashboard',
             element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-            loader: () => fetch('http://localhost:5001/donors'),
+            loader: () => fetch('https://blood-donation-server-ten.vercel.app/donors'),
 
             children: [
                   {
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
                   {
                         path: 'allUsers',
                         element: <AllUsers></AllUsers>,
-                        loader: () => fetch('http://localhost:5001/donors')
+                        loader: () => fetch('https://blood-donation-server-ten.vercel.app/donors')
                   },
                   {
                         path: 'allBloodDonationReq',
